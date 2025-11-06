@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>带图片的温馨提示</title>
+  <style>
+	body {
+       margin: 0;
+       padding: 0;
+       min-height: 100vh; /* 铺满整个屏幕 */
+       background-image: url('https://s21.ax1x.com/2025/11/06/pZpi1qx.jpg'); /* 替换成你的背景图链接 */
+       background-size: cover; /* 背景图铺满屏幕 */
+       background-position: center; /* 背景图居中显示 */
+     }
+    .tip { 
+      position: absolute; 
+      padding: 15px 20px; 
+      border-radius: 5px; 
+      font-size: 16px; 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tip img {
+      width: 30px; /* 图片大小可调整 */
+      height: 30px;
+    }
+  </style>
+</head>
+<body>
+<script>
+  // 提示语+对应的图片（用公开图片链接，可替换成你喜欢的）
+  const tips = [
+    {text: '别熬夜~', img: 'https://img.icons8.com/fluency/96/000000/star.png'}, // 星星
+    {text: '记得吃水果~', img: 'https://img.icons8.com/fluency/96/000000/cake.png'}, // 蛋糕
+    {text: '保持微笑呀~', img: 'https://img.icons8.com/fluency/96/000000/star.png'},
+    {text: '多喝水哦~', img: 'https://img.icons8.com/fluency/96/000000/cake.png'},
+    {text: '祝程玉珂生日快乐~', img: 'https://img.icons8.com/fluency/96/000000/star.png'},
+    {text: '祝程玉珂生日快乐~', img: 'https://img.icons8.com/fluency/96/000000/star.png'},
+    {text: '祝程玉珂生日快乐~', img: 'https://img.icons8.com/fluency/96/000000/star.png'},
+    {text: '祝程玉珂生日快乐~', img: 'https://img.icons8.com/fluency/96/000000/star.png'},
+    {text: '祝程玉珂生日快乐~', img: 'https://img.icons8.com/fluency/96/000000/star.png'},
+    {text: '祝程玉珂生日快乐~', img: 'https://img.icons8.com/fluency/96/000000/star.png'},
+   {text: '祝程玉珂生日快乐~', img: 'https://img.icons8.com/fluency/96/000000/cake.png'},
+   {text: '祝程玉珂生日快乐~', img: 'https://img.icons8.com/fluency/96/000000/cake.png'},
+   {text: '祝程玉珂生日快乐~', img: 'https://img.icons8.com/fluency/96/000000/cake.png'},
+   {text: '祝程玉珂生日快乐~', img: 'https://img.icons8.com/fluency/96/000000/cake.png'},
+    {text: '每天都过得开心哦~', img: 'https://img.icons8.com/fluency/96/000000/star.png'}
+  ];
+  // 弹窗颜色
+  const colors = ['lightpink', 'skyblue', 'lightgreen', 'lavender', 'coral'];
+  
+  function createTip() {
+    const tip = document.createElement('div');
+    tip.className = 'tip';
+    // 随机选提示语和图片
+    const randomItem = tips[Math.floor(Math.random()*tips.length)];
+    // 添加图片
+    const img = document.createElement('img');
+    img.src = randomItem.img;
+    img.alt = '装饰图';
+    // 添加文字
+    const text = document.createTextNode(randomItem.text);
+    // 组装弹窗
+    tip.appendChild(img);
+    tip.appendChild(text);
+    tip.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+    // 随机位置
+    const x = Math.random()*(window.innerWidth - 200);
+    const y = Math.random()*(window.innerHeight - 80);
+    tip.style.left = x + 'px';
+    tip.style.top = y + 'px';
+    document.body.appendChild(tip);
+  }
+  // 生成50个弹窗
+  for(let i=0; i<50; i++) setTimeout(createTip, i*200);
+</script>
+</body>
+</html>
